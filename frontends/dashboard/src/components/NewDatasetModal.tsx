@@ -795,6 +795,88 @@ export const NewDatasetModal = (props: NewDatasetModalProps) => {
 
                           <div class="content-center py-4 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
                             <label
+                              for="boostTitles"
+                              class="flex h-full items-center gap-2 pt-1.5 text-sm font-medium leading-6"
+                            >
+                              Allow External Links
+                              <Tooltip
+                                body={
+                                  <FaRegularCircleQuestion class="h-4 w-4 text-black" />
+                                }
+                                tooltipText="Option for allowing the crawl to follow links to external websites."
+                                direction="right"
+                              />
+                            </label>
+                            <input
+                              type="checkbox"
+                              id="boostTitles"
+                              name="boostTitles"
+                              class="col-span-2 mt-2.5 block w-fit rounded-md border-[0.5px] border-neutral-300 bg-white px-3 text-start placeholder:text-neutral-400 focus:outline-magenta-500 sm:text-sm sm:leading-6"
+                              checked={
+                                crawlOptions()?.allow_external_links ?? true
+                              }
+                              onChange={(e) =>
+                                setCrawlOptions((prev) => {
+                                  if (!prev) {
+                                    return {
+                                      allow_external_links:
+                                        e.currentTarget.checked,
+                                    };
+                                  }
+
+                                  return {
+                                    ...prev,
+                                    allow_external_links:
+                                      e.currentTarget.checked,
+                                  };
+                                })
+                              }
+                            />
+                          </div>
+
+                          <div class="content-center py-4 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+                            <label
+                              for="boostTitles"
+                              class="flex h-full items-center gap-2 pt-1.5 text-sm font-medium leading-6"
+                            >
+                              Allow Backward Links
+                              <Tooltip
+                                body={
+                                  <FaRegularCircleQuestion class="h-4 w-4 text-black" />
+                                }
+                                tooltipText="Option for allowing the crawl to follow links to external websites."
+                                direction="right"
+                              />
+                            </label>
+                            <input
+                              type="checkbox"
+                              id="boostTitles"
+                              name="boostTitles"
+                              class="col-span-2 mt-2.5 block w-fit rounded-md border-[0.5px] border-neutral-300 bg-white px-3 text-start placeholder:text-neutral-400 focus:outline-magenta-500 sm:text-sm sm:leading-6"
+                              checked={
+                                crawlOptions()?.allow_backward_links ?? true
+                              }
+                              onChange={(e) =>
+                                setCrawlOptions((prev) => {
+                                  if (!prev) {
+                                    return {
+                                      allow_backward_links:
+                                        e.currentTarget.checked,
+                                    };
+                                  }
+
+                                  return {
+                                    ...prev,
+                                    allow_backward_links:
+                                      e.currentTarget.checked,
+                                  };
+                                })
+                              }
+                            />
+                          </div>
+
+                          <div class="content-center py-4 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+                            <label
                               for="openapiSchemaUrl"
                               class="flex h-full items-center gap-2 pt-1.5 text-sm font-medium leading-6"
                             >

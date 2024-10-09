@@ -5976,6 +5976,7 @@
       },
       "BatchQueuedChunkResponse": {
         "type": "object",
+        "title": "batch",
         "required": [
           "chunk_metadata",
           "pos_in_queue"
@@ -6869,6 +6870,7 @@
       },
       "ChunkReqPayload": {
         "type": "object",
+        "title": "single",
         "properties": {
           "chunk_html": {
             "type": "string",
@@ -7290,7 +7292,18 @@
       },
       "CrawlOptions": {
         "type": "object",
+        "description": "Options for setting up the crawl which will populate the dataset.",
         "properties": {
+          "allow_backward_links": {
+            "type": "boolean",
+            "description": "Option for allowing the crawl to navigate from a specific URL to previously linked pages.",
+            "nullable": true
+          },
+          "allow_external_links": {
+            "type": "boolean",
+            "description": "Option for allowing the crawl to follow links to external websites.",
+            "nullable": true
+          },
           "boost_titles": {
             "type": "boolean",
             "description": "Boost titles such that keyword matches in titles are prioritized in search results. Strongly recommended to leave this on. Defaults to true.",
