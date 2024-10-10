@@ -854,7 +854,7 @@ export const NewDatasetModal = (props: NewDatasetModalProps) => {
                               name="boostTitles"
                               class="col-span-2 mt-2.5 block w-fit rounded-md border-[0.5px] border-neutral-300 bg-white px-3 text-start placeholder:text-neutral-400 focus:outline-magenta-500 sm:text-sm sm:leading-6"
                               checked={
-                                crawlOptions()?.allow_backward_links ?? true
+                                crawlOptions()?.allow_backward_links ?? false
                               }
                               onChange={(e) =>
                                 setCrawlOptions((prev) => {
@@ -869,6 +869,43 @@ export const NewDatasetModal = (props: NewDatasetModalProps) => {
                                     ...prev,
                                     allow_backward_links:
                                       e.currentTarget.checked,
+                                  };
+                                })
+                              }
+                            />
+                          </div>
+
+                          <div class="content-center py-4 sm:grid sm:grid-cols-3 sm:items-start sm:gap-4">
+                            <label
+                              for="boostTitles"
+                              class="flex h-full items-center gap-2 pt-1.5 text-sm font-medium leading-6"
+                            >
+                              Ignore Sitemap
+                              <Tooltip
+                                body={
+                                  <FaRegularCircleQuestion class="h-4 w-4 text-black" />
+                                }
+                                tooltipText="Ignore the website sitemap when crawling"
+                                direction="right"
+                              />
+                            </label>
+                            <input
+                              type="checkbox"
+                              id="boostTitles"
+                              name="boostTitles"
+                              class="col-span-2 mt-2.5 block w-fit rounded-md border-[0.5px] border-neutral-300 bg-white px-3 text-start placeholder:text-neutral-400 focus:outline-magenta-500 sm:text-sm sm:leading-6"
+                              checked={crawlOptions()?.ignore_sitemap ?? false}
+                              onChange={(e) =>
+                                setCrawlOptions((prev) => {
+                                  if (!prev) {
+                                    return {
+                                      ignore_sitemap: e.currentTarget.checked,
+                                    };
+                                  }
+
+                                  return {
+                                    ...prev,
+                                    ignore_sitemap: e.currentTarget.checked,
                                   };
                                 })
                               }

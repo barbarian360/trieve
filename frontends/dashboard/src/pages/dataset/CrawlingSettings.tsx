@@ -242,9 +242,21 @@ const RealCrawlingSettings = (props: RealCrawlingSettingsProps) => {
         <input
           class="h-4 w-4 rounded border border-neutral-300 bg-neutral-100 p-1 accent-magenta-400 dark:border-neutral-900 dark:bg-neutral-800"
           type="checkbox"
-          checked={options.allow_backward_links ?? true}
+          checked={options.allow_backward_links ?? false}
           onChange={(e) => {
             setOptions("allow_backward_links", e.currentTarget.checked);
+          }}
+        />
+      </div>
+
+      <div class="flex items-center gap-2 py-2 pt-4">
+        <label class="block">Ignore Sitemap</label>
+        <input
+          class="h-4 w-4 rounded border border-neutral-300 bg-neutral-100 p-1 accent-magenta-400 dark:border-neutral-900 dark:bg-neutral-800"
+          type="checkbox"
+          checked={options.ignore_sitemap ?? true}
+          onChange={(e) => {
+            setOptions("ignore_sitemap", e.currentTarget.checked);
           }}
         />
       </div>
